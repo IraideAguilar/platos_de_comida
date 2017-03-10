@@ -18,6 +18,15 @@ public class Platos extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JCheckBox checkPatata;
+	private JCheckBox checkArraultza;
+	private JCheckBox checkLetxuga;
+	private JCheckBox checkPernilla;
+	private JCheckBox checkPimienta;
+	private JCheckBox checkPiperra;
+	private JButton buttonComprobar;
+	private JCheckBox checkTxorizoa;
+	private JCheckBox checkKinpula;
 
 	/**
 	 * Launch the application.
@@ -38,6 +47,7 @@ public class Platos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+
 	public Platos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -46,29 +56,50 @@ public class Platos extends JFrame {
 		setContentPane(contentPane);
 
 		JRadioButton radioTortillaConCebolla = new JRadioButton("Tortilla con cebolla");
+		radioTortillaConCebolla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+                  limpiarFormulario();
+			}
+		});
+
 		buttonGroup.add(radioTortillaConCebolla);
 
 		JRadioButton radioTortillaSinCebolla = new JRadioButton("Tortilla sin cebolla");
+		radioTortillaSinCebolla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarFormulario();
+			}
+		});
+
 		buttonGroup.add(radioTortillaSinCebolla);
 
 		JRadioButton radioTortillaFrancesaCon = new JRadioButton("Tortilla francesa con jam\u00F3n");
+		radioTortillaFrancesaCon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarFormulario();
+			}
+		});
+
 		buttonGroup.add(radioTortillaFrancesaCon);
 
-		JCheckBox checkPatata = new JCheckBox("Patata");
+		checkPatata = new JCheckBox("Patata");
 
-		JCheckBox checkArraultza = new JCheckBox("Arraultza");
+		checkArraultza = new JCheckBox("Arraultza");
 
-		JCheckBox checkLetxuga = new JCheckBox("Letxuga");
+		checkLetxuga = new JCheckBox("Letxuga");
 
-		JCheckBox checkPernilla = new JCheckBox("pernilla");
+		checkPernilla = new JCheckBox("pernilla");
 
-		JCheckBox checkPimienta = new JCheckBox("pimienta");
+		checkPimienta = new JCheckBox("pimienta");
 
-		JCheckBox checkPiperra = new JCheckBox("piperra");
+		checkPiperra = new JCheckBox("piperra");
 
-		JCheckBox checkTxorizoa = new JCheckBox("txorizoa");
+		checkTxorizoa = new JCheckBox("txorizoa");
 
-		JButton buttonComprobar = new JButton("comprobar");
+		buttonComprobar = new JButton("comprobar");
+
+		checkKinpula = new JCheckBox("Kinpula");
+
 		buttonComprobar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (radioTortillaConCebolla.isSelected()) {
@@ -80,7 +111,7 @@ public class Platos extends JFrame {
 						buttonComprobar.setBackground(Color.red);
 					}
 				}
-			
+
 				if (radioTortillaSinCebolla.isSelected()) {
 					if (checkArraultza.isSelected() && checkPatata.isSelected() && !checkKinpula.isSelected()
 							&& !checkLetxuga.isSelected() && !checkPimienta.isSelected() && !checkTxorizoa.isSelected()
@@ -104,7 +135,6 @@ public class Platos extends JFrame {
 			}
 		});
 
-		JCheckBox checkKinpula = new JCheckBox("Kinpula");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
@@ -136,5 +166,16 @@ public class Platos extends JFrame {
 						.addComponent(checkPiperra).addComponent(checkTxorizoa).addComponent(checkKinpula))
 				.addGap(34).addComponent(buttonComprobar).addContainerGap(50, Short.MAX_VALUE)));
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	public void limpiarFormulario() {
+		checkPatata.setSelected(false);
+		checkPimienta.setSelected(false);
+		checkKinpula.setSelected(false);
+		checkLetxuga.setSelected(false);
+		checkArraultza.setSelected(false);
+		checkPiperra.setSelected(false);
+		checkPernilla.setSelected(false);
+        buttonComprobar.setBackground(new Color(240,240,240));
 	}
 }
